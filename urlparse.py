@@ -35,8 +35,8 @@ def parse(search_terms):
 
     # Check if url
     url_regex = "^(http://|https://)?(www\.)?[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+.*$"
-    if (url := re.search(url_regex, search_terms)):
-        return url
+    if re.search(url_regex, search_terms):
+        return search_terms
 
     # Finally return default search
     with open(os.path.join(config_dir, 'searchengines'), 'r') as f:
