@@ -8,7 +8,7 @@ def parse(search_terms):
         sys.stderr.write('Usage: urlparse [-h] search_terms.\n')
         exit(1)
 
-    config_dir = os.path.join(os.getenv('HOME'), '.config', 'urlparse')
+    config_dir = os.path.join(os.getenv('HOME'), '.local', 'share', 'urlparse')
 
     # Check search engines
     try:
