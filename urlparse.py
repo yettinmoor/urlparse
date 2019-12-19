@@ -39,14 +39,12 @@ def parse(search_terms):
         return search_terms
 
     # Finally return default search
-    with open(os.path.join(config_dir, 'searchengines'), 'r') as f:
-        try:
+    try:
+        with open(os.path.join(config_dir, 'searchengines'), 'r') as f:
             default_engine = f.readline().rstrip().split(' ')[1]
             return default_engine % search_terms
-        # No search engine
-        except IndexError:
-            sys.stderr.write('Search engine list empty. Input your default search engine into {}.\n'.format(f.name))
-            exit(1)
+    except (IndexError, FileNotFoundError):
+        return search_terms
 
 
 if __name__ == '__main__':
