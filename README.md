@@ -2,7 +2,7 @@
 
 A simple Python utility that translates input into a URL a browser can use. Reads `bookmarks` and `searchengines` in `.local/share/urlparse`. If input does not match a bookmark/search engine and is not a URL, urlparse will by default return a search URL for the first search engine.
 
-## Note
+### Note
 
 Since creating this program, I have written a much more concise shell script that achieves the same purpose. It uses the same search engine & bookmark format and file location. I have written in at the bottom of this readme.
 
@@ -43,7 +43,7 @@ osm https://www.openstreetmap.org/search?query=%s
 [ -z "$1" ] && exit 1
 
 # Check url
-echo "$1" | grep '^(http://|https://)?(www\.)?[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+.*$' && exit
+echo "$1" | grep -E '^(http://|https://)?(www\.)?[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+.*$' && exit
 
 # Check searchengines
 se=$( grep "^$1 " ~/.local/share/urlparse/searchengines | cut -d' ' -f2 )
